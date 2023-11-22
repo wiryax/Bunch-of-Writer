@@ -1,6 +1,6 @@
 package com.enigma.bunchofwriters.controller;
 
-import com.enigma.bunchofwriters.dto.request.ArticelRequest;
+import com.enigma.bunchofwriters.dto.request.ArticleRequest;
 import com.enigma.bunchofwriters.dto.response.ArticleResponse;
 import com.enigma.bunchofwriters.model.CommonResponse;
 import com.enigma.bunchofwriters.service.ArticleService;
@@ -17,9 +17,9 @@ import java.util.List;
 public class ArticleController {
     private final ArticleService articleService;
     @PostMapping
-    public ResponseEntity<?> uploadArticle(@RequestBody ArticelRequest articelRequest){
-        articleService.save(articelRequest);
-        return ResponseEntity.ok(articelRequest);
+    public ResponseEntity<?> uploadArticle(@RequestBody ArticleRequest articleRequest){
+        articleService.save(articleRequest);
+        return ResponseEntity.ok(articleRequest);
     }
 
     @GetMapping
@@ -51,8 +51,8 @@ public class ArticleController {
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody ArticelRequest articelRequest){
-        articleService.update(articelRequest);
+    public ResponseEntity<?> update(@RequestBody ArticleRequest articleRequest){
+        articleService.update(articleRequest);
         return ResponseEntity.status(HttpStatus.OK).body("success update article");
     }
 }

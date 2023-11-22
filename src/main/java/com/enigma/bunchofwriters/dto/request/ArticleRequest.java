@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ArticelRequest {
+public class ArticleRequest {
     private String id;
     private String authorId;
     private String title;

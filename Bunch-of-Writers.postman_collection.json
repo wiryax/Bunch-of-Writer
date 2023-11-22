@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "a75b6315-c03a-4fde-ac0e-c7dd63232fc1",
+		"name": "Bunch-of-Writers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18656243"
+	},
+	"item": [
+		{
+			"name": "delete article",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save article",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"authorId\": \"e416d346-fdcf-4a97-a495-dbfa0f77f1d0\",\n  \"title\": \"vakansi\",\n  \"text\": \"<h1>Lorem ipsum dolor sit amet.</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br>\",\n  \"references\": [\n    {\n      \"title\": \"exemple-ref-title-1\",\n      \"url\": \"wirya.com\"\n    },\n    {\n      \"title\": \"exemple-ref-title-2\",\n      \"url\": \"wirya.com\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update article",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"id\": \"463f3cab-ff08-4635-a429-cbd61f040aaa\",\n    \"authorId\": \"e416d346-fdcf-4a97-a495-dbfa0f77f1d0\",\n    \"title\": \"vakansi vol-2\",\n    \"text\": \"<h1>Lorem ipsum dolor sit amet.</h1><p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur deserunt dolorum eligendi est facilis id minima natus odit porro! Asperiores at deserunt ea esse facilis fugiat modi nostrum qui.</p><br>\",\n    \"references\": [\n        {\n            \"title\": \"exemple-ref-title-1\",\n            \"url\": \"wirya.com\"\n        },\n        {\n            \"title\": \"exemple-ref-title-2\",\n            \"url\": \"wirya.com\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all article",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create auhtor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nickname\" : \"Dinda Tri Kata\",\n    \"bio\" : \"Author of Vakansi Novel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/author",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"author"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find article by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/post/463f3cab-ff08-4635-a429-cbd61f040aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"463f3cab-ff08-4635-a429-cbd61f040aaa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

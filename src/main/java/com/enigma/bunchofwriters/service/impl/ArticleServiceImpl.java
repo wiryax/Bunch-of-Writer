@@ -1,6 +1,6 @@
 package com.enigma.bunchofwriters.service.impl;
 
-import com.enigma.bunchofwriters.dto.request.ArticelRequest;
+import com.enigma.bunchofwriters.dto.request.ArticleRequest;
 import com.enigma.bunchofwriters.dto.request.ReferenceRequest;
 import com.enigma.bunchofwriters.dto.request.RequestArticleMeta;
 import com.enigma.bunchofwriters.dto.response.ArticleMetaResponse;
@@ -33,11 +33,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Transactional
     @Override
-    public ArticleResponse save(ArticelRequest articelRequest) {
-        Author author = authorService.selectById(articelRequest.getAuthorId());
+    public ArticleResponse save(ArticleRequest articleRequest) {
+        Author author = authorService.selectById(articleRequest.getAuthorId());
         Article article = Article.builder()
                 .id(UUID.randomUUID().toString())
-                .tittle(articelRequest.getTitle())
+                .tittle(articleRequest.getTitle())
                 .publisDate(LocalDateTime.now())
                 .author(author)
                 .status("publish")
@@ -50,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
                 article.getStatus(),
                 null
         );
-        /*        List<ReferenceRequest> references = articelRequest.getReferences().stream().map(r -> {
+        /*        List<ReferenceRequest> references = articleRequest.getReferences().stream().map(r -> {
             return ReferenceRequest.builder()
                     .articleId(article.getId())
                     .url(r.getUrl())
@@ -59,9 +59,9 @@ public class ArticleServiceImpl implements ArticleService {
         }).collect(Collectors.toList());
         RequestArticleMeta requestArticleMeta = RequestArticleMeta.builder()
                 .articleId(article.getId())
-                .text(articelRequest.getText())
+                .text(articleRequest.getText())
                 .build();*/
-        Map<String, Object> articleData = getArticleData(articelRequest, article.getId());
+        Map<String, Object> articleData = getArticleData(articleRequest, article.getId());
         articleMetaService.inserArticleMeta((RequestArticleMeta) articleData.get("articleMeta"));
         referenceService.insertBulkReference((List<ReferenceRequest>) articleData.get("references"));
         return ArticleResponse.builder()
@@ -93,7 +93,7 @@ public class ArticleServiceImpl implements ArticleService {
         }).collect(Collectors.toList());
         return articleResponses;
     }
-    private Map<String, Object> getArticleData(ArticelRequest article, String articleId){
+    private Map<String, Object> getArticleData(ArticleRequest article, String articleId){
         List<ReferenceRequest> references = article.getReferences().stream().map(r -> {
             return ReferenceRequest.builder()
                     .articleId(articleId)
@@ -125,13 +125,13 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void update(ArticelRequest articelRequest) {
-        Author author = authorService.selectById(articelRequest.getAuthorId());
-        Article article = getById(articelRequest.getId());
+    public void update(ArticleRequest articleRequest) {
+        Author author = authorService.selectById(articleRequest.getAuthorId());
+        Article article = getById(articleRequest.getId());
 
-        articleRepository.update(LocalDateTime.now(), articelRequest.getTitle(), article.getId());
+        articleRepository.update(LocalDateTime.now(), articleRequest.getTitle(), article.getId());
 
-        Map<String, Object> articleData = getArticleData(articelRequest, article.getId());
+        Map<String, Object> articleData = getArticleData(articleRequest, article.getId());
 
         RequestArticleMeta articleMeta = (RequestArticleMeta) articleData.get("articleMeta");
         List<ReferenceRequest> references = (List<ReferenceRequest>) articleData.get("references");
